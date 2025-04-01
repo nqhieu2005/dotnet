@@ -1,0 +1,92 @@
+﻿@model PersonProject.Models.Course
+
+@{
+    ViewData["Title"] = "Course Details";
+}
+
+<div class="container py-4">
+    <div class="card shadow-sm">
+        <div class="card-header bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2 class="mb-0">Course Details</h2>
+                <div>
+                    <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">
+                        <i class="fas fa-edit"></i> Edit
+                    </a>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left"></i> Back to List
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div class="row g-4">
+                <div class="col-md-8">
+                    <div class="detail-section">
+                        <h4 class="text-primary mb-3">Course Information</h4>
+                        <dl class="row">
+                            <dt class="col-sm-3 text-muted">
+                                @Html.DisplayNameFor(model => model.Name)
+                            </dt>
+                            <dd class="col-sm-9">
+                                <strong>@Html.DisplayFor(model => model.Name)</strong>
+                            </dd>
+
+                            <dt class="col-sm-3 text-muted">
+                                @Html.DisplayNameFor(model => model.Description)
+                            </dt>
+                            <dd class="col-sm-9">
+                                @Html.DisplayFor(model => model.Description)
+                            </dd>
+
+                            <dt class="col-sm-3 text-muted">
+                                @Html.DisplayNameFor(model => model.Price)
+                            </dt>
+                            <dd class="col-sm-9">
+                                <span class="badge bg-success fs-6">
+                                    @Html.DisplayFor(model => model.Price)
+                                </span>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h5 class="card-title">Quick Actions</h5>
+                            <div class="d-grid gap-2">
+                                <a asp-action="Edit" asp-route-id="@Model?.Id"
+                                   class="btn btn-outline-primary">
+                                    <i class="fas fa-edit"></i> Edit Course
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@Model?.Id"
+                                   class="btn btn-outline-danger">
+                                    <i class="fas fa-trash"></i> Delete Course
+                                </a>
+                                <a asp-action="Index" class="btn btn-outline-secondary">
+                                    <i class="fas fa-list"></i> View All Courses
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .detail-section {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+    }
+
+    .detail-section dt {
+        font-weight: 500;
+    }
+
+    .detail-section dd {
+        margin-bottom: 1rem;
+    }
+</style>
